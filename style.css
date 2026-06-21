@@ -263,6 +263,7 @@ header.scrolled {
     border-radius: 4px;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    flex-shrink: 0 !important; /* Prevent shrinking under any viewport constraints */
 }
 
 .logo-wrapper:hover {
@@ -1826,82 +1827,16 @@ section {
     .section-title h2 {
         font-size: 1.8rem;
     }
-    
-    /* Hero Adaptive Sizing */
-    .hero {
-        height: auto;
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
-        padding: 140px 15px 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .hero-content {
-        padding: 25px 20px;
-        min-height: auto;
-    }
-    
-    /* Portal Grid & Sizing */
-    .portal-card {
-        padding: 35px 20px;
-        min-height: auto;
-    }
-    
-    .portal-content h3 {
-        font-size: 1.4rem;
-    }
-    
-    .portal-content p {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-    
-    /* Small screen modal adjustments */
-    .modal-content {
-        padding: 25px 15px;
-        margin: 0 10px;
-    }
 }
 
 /* Targeted Smartphone Optimizations (width <= 576px) */
 @media (max-width: 576px) {
-    /* Header layout space compression */
-    header {
-        padding: 10px 15px;
-    }
-    
-    header.scrolled {
-        padding: 8px 15px;
-    }
-    
-    .logo-wrapper {
-        padding: 6px 12px;
-    }
-    
-    header.scrolled .logo-wrapper {
-        padding: 4px 10px;
-    }
-    
     .logo-img {
         height: 38px;
     }
     
-    header.scrolled .logo-img {
-        height: 32px;
-    }
-    
     #menuBtn {
         font-size: 1.35rem;
-    }
-    
-    /* Navigation drawer overlay fallback */
-    nav {
-        top: 0;
-        height: 100vh;
-        z-index: 999;
-        padding-top: 100px;
     }
     
     /* Convert tabbed buttons row to an elegant responsive grid */
@@ -1940,32 +1875,6 @@ section {
 
 /* Ultra-Compact Smartphone Sizing (width <= 480px) */
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.6rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.75rem;
-        letter-spacing: 1px;
-    }
-    
-    .hero-desc {
-        font-size: 0.85rem;
-        margin-bottom: 18px;
-    }
-    
-    .hero-buttons {
-        width: 100%;
-    }
-    
-    .hero-buttons .btn-primary,
-    .hero-buttons .btn-secondary {
-        width: 100%;
-        text-align: center;
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-    
     /* Squeeze down inputs/calc padding completely */
     .calc-inputs {
         padding: 20px 15px;
@@ -2047,13 +1956,398 @@ section {
         font-size: 0.75rem;
     }
     
-    /* Compress text sizes further to avoid clipping */
-    .hero h1 {
-        font-size: 1.4rem;
+    /* Small footer logo bounds */
+    .logo-container-footer {
+        padding: 10px 15px !important;
+        max-width: 100% !important;
     }
     
+    .logo-img-footer {
+        max-height: 60px !important;
+    }
+    
+    .footer-top {
+        padding: 40px 0;
+    }
+    
+    /* Reduce accordion header padding */
+    .accordion-btn {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .accordion-panel p {
+        padding: 0 20px 15px 20px;
+        font-size: 0.85rem;
+    }
+    
+    /* Reduce testimonials rating and layout scale */
+    .rating {
+        font-size: 1rem;
+    }
+    
+    .feedback {
+        font-size: 1.05rem;
+    }
+}
+
+/* Guarantee menu interaction safety during open nav drawer states on small viewports */
+#menuBtn {
+    position: relative !important;
+    z-index: 1010 !important;
+}
+
+.logo-wrapper {
+    position: relative !important;
+    z-index: 1010 !important;
+}
+
+
+/* ==========================================================================
+   SPECIFIC REDESIGNS AND MOBILE-FIRST OVERRIDES FOR MOBILE & TABLET
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    /* --- MOBILE HEADER REDESIGN --- */
+    header {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 12px 20px !important; /* Spacious and tight */
+        height: 70px !important; /* Uniform strict mobile height */
+    }
+
+    header.scrolled {
+        padding: 10px 20px !important;
+        height: 66px !important;
+    }
+
+    /* Redesigned White Card Logo Badge */
+    .logo-wrapper {
+        padding: 5px 14px !important; /* Premium aspect ratio */
+        border-radius: 6px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        flex-shrink: 0 !important; /* Bulletproof logo protection against shrinking */
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .logo-img {
+        height: 44px !important; /* Perfect visible proportional height */
+        width: auto !important;
+        max-width: 120px !important;
+        display: block !important;
+    }
+
+    header.scrolled .logo-wrapper {
+        padding: 4px 10px !important;
+    }
+
+    header.scrolled .logo-img {
+        height: 38px !important;
+    }
+
+    /* Redesigned hamburger icon layout */
+    #menuBtn {
+        display: block !important;
+        font-size: 1.4rem !important;
+        color: var(--white) !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 1010 !important;
+        width: 32px;
+        height: 32px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- MOBILE HERO HEIGHT & ALIGNMENT OVERHAUL --- */
+    .hero {
+        height: 90vh !important; /* Fixed proportion viewport height so image is never vertically high */
+        min-height: 580px !important;
+        padding: 100px 20px 40px !important; /* Compact vertical spacing */
+        display: flex !important;
+        align-items: center !important; /* Centers the content card beautifully vertically */
+        justify-content: center !important; /* Centers card horizontally */
+    }
+
+    .hero-slides, .hero-slide {
+        height: 100% !important;
+    }
+
+    /* 50% Glass text content card centering */
     .hero-content {
-        padding: 15px 10px;
+        margin: auto !important; /* Absolute centering */
+        width: 100% !important;
+        max-width: 480px !important;
+        min-height: auto !important;
+        padding: 25px 20px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .hero h1 {
+        font-size: 1.55rem !important; /* Reduced proportional font size */
+        line-height: 1.3 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .hero-desc {
+        font-size: 0.88rem !important;
+        margin-bottom: 18px !important;
+    }
+
+    .hero-buttons {
+        gap: 10px !important;
+    }
+
+    .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
+        padding: 10px 20px !important;
+        font-size: 0.88rem !important;
+    }
+
+    /* Sticky high-contrast social buttons on mobile */
+    .hero-socials {
+        display: none !important; /* Suppress duplicate mobile floating nodes to look cleaner */
+    }
+
+    /* --- PREMIUM MOBILE MENU DRAWER OVERHAUL --- */
+    nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background: var(--primary);
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        transition: var(--transition);
+        padding: 40px;
+    }
+    
+    nav.open {
+        left: 0;
+    }
+
+    nav a {
+        background-color: rgba(255, 255, 255, 0.04);
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a::after {
+        display: none !important; 
+    }
+    
+    .about-grid, .calc-box, .video-grid, .portals-grid, .contact-grid, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image .image-box {
+        height: 350px;
+    }
+    
+    .calc-inputs, .calc-result {
+        padding: 30px;
+    }
+
+    .logo-wrapper {
+        padding: 6px 12px;
+    }
+
+    .logo-img {
+        height: 40px; 
+    }
+
+    .hero {
+        padding: 180px 20px 50px; 
+        justify-content: center; 
+    }
+
+    .hero-content {
+        padding: 30px 25px; 
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-desc {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-socials {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   ENHANCED ULTRA-RESPONSIVE STYLES (DOWN TO 280PX SMARTPHONES)
+   ========================================================================== */
+
+/* Universal Section Overflow Guard to block background watermark horizontal spill */
+section {
+    overflow: hidden;
+}
+
+/* Base structural padding tweaks for smaller devices */
+@media (max-width: 768px) {
+    section {
+        padding: 60px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        margin-bottom: 40px;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Targeted Smartphone Optimizations (width <= 576px) */
+@media (max-width: 576px) {
+    .logo-img {
+        height: 38px;
+    }
+    
+    #menuBtn {
+        font-size: 1.35rem;
+    }
+    
+    /* Convert tabbed buttons row to an elegant responsive grid */
+    .tab-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        border-bottom: none;
+    }
+    
+    .tab-btn {
+        padding: 8px 2px;
+        font-size: 0.78rem;
+        text-align: center;
+        border-bottom: 2px solid #dee2e6;
+    }
+    
+    .tab-btn.active {
+        border-bottom-color: var(--secondary);
+    }
+    
+    /* Stats grid tweaks */
+    .stats {
+        padding: 40px 15px;
+        gap: 20px;
+    }
+    
+    .stat-box {
+        padding: 20px 10px;
+    }
+    
+    .stat-box h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Ultra-Compact Smartphone Sizing (width <= 480px) */
+@media (max-width: 480px) {
+    /* Squeeze down inputs/calc padding completely */
+    .calc-inputs {
+        padding: 20px 15px;
+    }
+    
+    .calc-result {
+        padding: 25px 15px;
+    }
+    
+    .custom-fields-title {
+        font-size: 0.95rem;
+    }
+    
+    /* Contact Form squeeze */
+    .contact-form {
+        padding: 20px 15px;
+    }
+    
+    /* Scaling WhatsApp Floaters & Back-to-Top button so they do not overlap text */
+    .whatsapp-float {
+        right: 15px;
+        bottom: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.15rem;
+    }
+    
+    .back-to-top {
+        right: 15px;
+        bottom: 65px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .whatsapp-float .tooltip {
+        display: none !important; /* Hide floating labels on tiny screens */
+    }
+    
+    /* Compact pricing labels */
+    .cost-range {
+        font-size: 1.5rem;
+    }
+    
+    .cost-range-secondary {
+        font-size: 1.35rem;
+    }
+    
+    /* Small title sizing */
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Galaxy Fold Unfolded & Tiny Screen Widths (width <= 320px) */
+@media (max-width: 320px) {
+    /* Avoid grid layout overflow when minimum width defaults to large sizes */
+    .services-grid, 
+    .portfolio-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .service-card {
+        padding: 20px 15px;
+    }
+    
+    /* Shrink experience badge so it doesn't overlap container borders */
+    .about-image .experience-badge {
+        bottom: 15px;
+        left: 15px;
+        padding: 10px 15px;
+    }
+    
+    .experience-badge h3 {
+        font-size: 1.5rem;
+    }
+    
+    .experience-badge p {
+        font-size: 0.75rem;
     }
     
     /* Small footer logo bounds */
@@ -2100,4 +2394,226 @@ section {
 .logo-wrapper {
     position: relative !important;
     z-index: 1010 !important;
+}
+
+
+/* ==========================================================================
+   SPECIFIC REDESIGNS AND MOBILE-FIRST OVERRIDES FOR MOBILE & TABLET
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    /* --- MOBILE HEADER REDESIGN --- */
+    header {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 12px 20px !important; /* Spacious and tight */
+        height: 70px !important; /* Uniform strict mobile height */
+    }
+
+    header.scrolled {
+        padding: 10px 20px !important;
+        height: 66px !important;
+    }
+
+    /* Redesigned White Card Logo Badge */
+    .logo-wrapper {
+        padding: 5px 14px !important; /* Premium aspect ratio */
+        border-radius: 6px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        flex-shrink: 0 !important; /* Bulletproof logo protection against shrinking */
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .logo-img {
+        height: 44px !important; /* Perfect visible proportional height */
+        width: auto !important;
+        max-width: 120px !important;
+        display: block !important;
+    }
+
+    header.scrolled .logo-wrapper {
+        padding: 4px 10px !important;
+    }
+
+    header.scrolled .logo-img {
+        height: 38px !important;
+    }
+
+    /* Redesigned hamburger icon layout */
+    #menuBtn {
+        display: block !important;
+        font-size: 1.4rem !important;
+        color: var(--white) !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 1010 !important;
+        width: 32px;
+        height: 32px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- MOBILE HERO HEIGHT & ALIGNMENT OVERHAUL --- */
+    .hero {
+        height: 90vh !important; /* Fixed proportion viewport height so image is never vertically high */
+        min-height: 580px !important;
+        padding: 100px 20px 40px !important; /* Compact vertical spacing */
+        display: flex !important;
+        align-items: center !important; /* Centers the content card beautifully vertically */
+        justify-content: center !important; /* Centers card horizontally */
+    }
+
+    .hero-slides, .hero-slide {
+        height: 100% !important;
+    }
+
+    /* 50% Glass text content card centering */
+    .hero-content {
+        margin: auto !important; /* Absolute centering */
+        width: 100% !important;
+        max-width: 480px !important;
+        min-height: auto !important;
+        padding: 25px 20px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .hero h1 {
+        font-size: 1.55rem !important; /* Reduced proportional font size */
+        line-height: 1.3 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .hero-desc {
+        font-size: 0.88rem !important;
+        margin-bottom: 18px !important;
+    }
+
+    .hero-buttons {
+        gap: 10px !important;
+    }
+
+    .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
+        padding: 10px 20px !important;
+        font-size: 0.88rem !important;
+    }
+
+    /* Sticky high-contrast social buttons on mobile */
+    .hero-socials {
+        display: none !important; /* Suppress duplicate mobile floating nodes to look cleaner */
+    }
+
+    /* --- PREMIUM MOBILE MENU DRAWER OVERHAUL --- */
+    nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background-color: var(--primary) !important; /* SOLID clean premium corporate background */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 20px !important;
+        padding: 90px 24px 40px !important;
+        transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        z-index: 999 !important;
+        box-shadow: none !important;
+    }
+
+    nav.open {
+        left: 0 !important;
+    }
+
+    nav a {
+        color: var(--white) !important;
+        font-family: var(--font-main) !important;
+        font-size: 1.2rem !important; /* Premium legible sizes */
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        background: transparent !important;
+        border: none !important;
+        width: auto !important;
+        padding: 6px 16px !important;
+        transition: var(--transition) !important;
+        text-align: center !important;
+    }
+
+    nav a::after {
+        display: none !important; /* Suppress animations on desktop drawer links */
+    }
+
+    nav a:hover, nav a.active {
+        color: var(--secondary) !important;
+    }
+
+    /* Premium Solid Quote Button on Mobile Drawer */
+    nav .quote-btn {
+        background-color: var(--secondary) !important;
+        color: var(--white) !important;
+        padding: 10px 30px !important;
+        border-radius: 50px !important; /* Modern pill capsule layout */
+        font-size: 1rem !important;
+        width: 80% !important; /* Solid broad CTA action */
+        max-width: 280px !important;
+        margin-top: 15px !important;
+        box-shadow: 0 4px 15px rgba(245, 130, 32, 0.35) !important;
+    }
+
+    nav .quote-btn:hover {
+        background-color: var(--secondary-hover) !important;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 10px 16px !important;
+        height: 64px !important;
+    }
+
+    .logo-wrapper {
+        padding: 4px 12px !important;
+    }
+
+    .logo-img {
+        height: 38px !important;
+    }
+
+    /* Dynamic viewport height adjustments on small smartphones */
+    .hero {
+        height: 85vh !important;
+        min-height: 480px !important;
+        padding: 80px 15px 30px !important;
+    }
+
+    .hero-content {
+        padding: 18px 15px !important;
+    }
+
+    .hero h1 {
+        font-size: 1.35rem !important;
+    }
+
+    .hero-buttons {
+        flex-direction: row !important; /* Keep buttons next to each other on landscape/smaller phones */
+        width: 100% !important;
+    }
+
+    .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
+        flex: 1 !important;
+        text-align: center !important;
+        padding: 10px 8px !important;
+        font-size: 0.82rem !important;
+    }
+
+    /* Tighter mobile tab buttons */
+    .tab-btn {
+        font-size: 0.72rem !important;
+        padding: 6px 1px !important;
+    }
 }
