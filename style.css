@@ -2010,63 +2010,76 @@ section {
 @media (max-width: 992px) {
     /* --- MOBILE HEADER REDESIGN --- */
     header {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 38px 24px !important; /* Spacious vertical padding for taller blue layout */
-        height: auto !important; /* Let height grow naturally based on content and padding */
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 160px !important; /* Spacious height to gracefully hold the expanded logo card */
+        background-color: var(--primary) !important; /* Solid premium Navy Blue background */
+        display: block !important; 
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        padding: 0 !important; 
     }
 
+    /* Keep the header size identical on scroll to prevent layout shifts */
     header.scrolled {
-        padding: 18px 24px !important;
-        height: auto !important;
+        height: 160px !important;
+        padding: 0 !important;
+        background-color: var(--primary) !important;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2) !important;
     }
 
-    /* Redesigned White Card Logo Badge */
+    /* Redesigned Centered White Card Logo Badge */
     .logo-wrapper {
         position: absolute !important;
         left: 50% !important;
         top: 50% !important;
-        transform: translate(-50%, -50%) !important; /* Perfect mathematical centering in blue bar */
-        padding: 8px 20px !important; /* Increased padding around logo card for visibility */
-        border-radius: 6px !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
-        flex-shrink: 0 !important; /* Bulletproof logo protection against shrinking */
+        transform: translate(-50%, -50%) !important; /* Perfect absolute centering inside blue header background */
+        background: var(--white) !important;
+        padding: 15px 30px !important; /* Fits the prominent footer logo dimensions */
+        border-radius: 8px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+        flex-shrink: 0 !important;
         display: flex !important;
         align-items: center !important;
+        justify-content: center !important;
         margin: 0 !important;
         z-index: 1010 !important;
     }
 
     .logo-img {
-        height: 52px !important; /* Bold, highly visible logo height */
-        max-height: 52px !important;
+        height: 80px !important; /* Matches footer badge height */
+        max-height: 80px !important;
         width: auto !important;
         display: block !important;
     }
 
     header.scrolled .logo-wrapper {
-        padding: 6px 16px !important;
+        padding: 15px 30px !important;
     }
 
     header.scrolled .logo-img {
-        height: 42px !important;
+        height: 80px !important;
+        max-height: 80px !important;
     }
 
     /* Redesigned hamburger icon layout */
     #menuBtn {
-        display: block !important;
-        font-size: 1.8rem !important; /* Thicker, bolder navigation lines */
+        position: absolute !important;
+        right: 24px !important; /* Perfectly positioned in corner */
+        top: 50% !important;
+        transform: translateY(-50%) !important; /* Perfect vertical center centering */
+        font-size: 2.2rem !important; /* Large visible thick horizontal lines */
         color: var(--white) !important;
         cursor: pointer !important;
-        position: relative !important;
         z-index: 1010 !important;
-        margin-left: auto !important; /* Pull to far right corner */
-        width: 38px;
-        height: 38px;
+        width: 48px !important;
+        height: 48px !important;
         display: flex !important;
-        align-items: center;
-        justify-content: center;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 !important;
     }
 
     #menuBtn:hover {
@@ -2077,7 +2090,7 @@ section {
     .hero {
         height: 90vh !important; /* Fixed proportion viewport height so image is never vertically high */
         min-height: 580px !important;
-        padding: 160px 20px 40px !important; /* Added 160px top padding for beautiful header clearance */
+        padding: 180px 20px 40px !important; /* Spacious top padding to safely clear the taller 160px header */
         display: flex !important;
         align-items: center !important; /* Centers the content card beautifully vertically */
         justify-content: center !important; /* Centers card horizontally */
@@ -2136,7 +2149,7 @@ section {
         justify-content: center !important;
         align-items: center !important;
         gap: 20px !important;
-        padding: 100px 24px 40px !important; /* Left space for top bar */
+        padding: 180px 24px 40px !important; /* Clear taller header */
         transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
         z-index: 999 !important;
         box-shadow: none !important;
@@ -2195,10 +2208,15 @@ section {
     }
 
     .logo-container-footer {
+        display: block !important;
         margin: 0 auto 20px !important; /* Center badge */
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
+        float: none !important;
+        text-align: center !important;
+    }
+
+    .logo-img-footer {
+        margin: 0 auto !important; /* Center image inside the card */
+        display: block !important;
     }
 
     .footer-socials {
@@ -2209,42 +2227,49 @@ section {
 
 @media (max-width: 576px) {
     header {
-        padding: 22px 16px !important; /* Increased padding by 100% to let header breathe beautifully */
-        height: auto !important;
+        height: 130px !important; /* Proportional vertical height on smartphones */
+        padding: 0 !important;
     }
 
     header.scrolled {
-        padding: 12px 16px !important;
+        height: 130px !important;
+        padding: 0 !important;
     }
 
     .logo-wrapper {
-        padding: 8px 16px !important; /* Tighter white badge padding */
+        padding: 10px 20px !important; /* Spacious padding */
     }
 
     .logo-img {
-        height: 56px !important; /* Increased by 80% for bold, legible mobile visibility */
-        max-height: 56px !important;
+        height: 62px !important; /* Clean prominent visibility */
+        max-height: 62px !important;
     }
 
     header.scrolled .logo-wrapper {
-        padding: 4px 12px !important;
+        padding: 10px 20px !important;
     }
 
     header.scrolled .logo-img {
-        height: 40px;
+        height: 62px !important;
+        max-height: 62px !important;
     }
 
     #menuBtn {
-        font-size: 1.9rem !important; /* Highly visible bars aligned perfectly in corner */
-        width: 40px;
-        height: 40px;
+        font-size: 2rem !important; /* Bold visible bars centered perfectly in corner */
+        right: 16px !important;
+        width: 44px !important;
+        height: 44px !important;
     }
 
     /* Dynamic viewport height adjustments on small smartphones */
     .hero {
         height: 85vh !important;
         min-height: 480px !important;
-        padding: 130px 15px 30px !important; /* Increased top padding to clear the taller header safely */
+        padding: 150px 15px 30px !important; /* Safely clear header */
+    }
+
+    nav {
+        padding: 150px 24px 40px !important;
     }
 
     .hero-content {
