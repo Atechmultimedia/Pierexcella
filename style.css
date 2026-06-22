@@ -2013,7 +2013,7 @@ section {
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 28px 24px !important; /* Spacious vertical padding for taller blue layout */
+        padding: 38px 24px !important; /* Spacious vertical padding for taller blue layout */
         height: auto !important; /* Let height grow naturally based on content and padding */
     }
 
@@ -2024,12 +2024,18 @@ section {
 
     /* Redesigned White Card Logo Badge */
     .logo-wrapper {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important; /* Perfect mathematical centering in blue bar */
         padding: 8px 20px !important; /* Increased padding around logo card for visibility */
         border-radius: 6px !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
         flex-shrink: 0 !important; /* Bulletproof logo protection against shrinking */
         display: flex !important;
         align-items: center !important;
+        margin: 0 !important;
+        z-index: 1010 !important;
     }
 
     .logo-img {
@@ -2055,8 +2061,7 @@ section {
         cursor: pointer !important;
         position: relative !important;
         z-index: 1010 !important;
-        margin-right: 4px !important;
-        transition: var(--transition);
+        margin-left: auto !important; /* Pull to far right corner */
         width: 38px;
         height: 38px;
         display: flex !important;
@@ -2180,11 +2185,31 @@ section {
     nav .quote-btn:hover {
         background-color: var(--secondary-hover) !important;
     }
+
+    /* --- CENTERED MOBILE FOOTER REDESIGN --- */
+    .footer-about {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Center-align white logo wrapper & text below */
+        text-align: center !important;
+    }
+
+    .logo-container-footer {
+        margin: 0 auto 20px !important; /* Center badge */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .footer-socials {
+        justify-content: center !important; /* Center social icons horizontally */
+        margin-top: 15px !important;
+    }
 }
 
 @media (max-width: 576px) {
     header {
-        padding: 22px 16px !important; /* Increased padding by 70% to let header breathe beautifully */
+        padding: 22px 16px !important; /* Increased padding by 100% to let header breathe beautifully */
         height: auto !important;
     }
 
@@ -2197,7 +2222,7 @@ section {
     }
 
     .logo-img {
-        height: 56px !important; /* Increased by 70% for bold, legible mobile visibility */
+        height: 56px !important; /* Increased by 80% for bold, legible mobile visibility */
         max-height: 56px !important;
     }
 
@@ -2206,7 +2231,7 @@ section {
     }
 
     header.scrolled .logo-img {
-        height: 40px !important;
+        height: 40px;
     }
 
     #menuBtn {
@@ -2219,7 +2244,7 @@ section {
     .hero {
         height: 85vh !important;
         min-height: 480px !important;
-        padding: 130px 15px 30px !important; /* Increased top padding to clear the 70% taller header safely */
+        padding: 130px 15px 30px !important; /* Increased top padding to clear the taller header safely */
     }
 
     .hero-content {
